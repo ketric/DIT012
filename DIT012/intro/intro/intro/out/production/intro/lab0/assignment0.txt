@@ -1,0 +1,61 @@
+
+*** Laboration 0 ***
+
+Den här filen innehåller instruktioner för program ni skall skriva (= labbar).
+
+Intro
+-----
+Alla laborationer distribueras som IntelliJ-projekt.
+Det du ser just nu är ett IntelliJ-projekt. Alla projekt har en assignmentN-fil (N = läsvecka)
+med instruktioner och uppgifter (på samma sätt som denna fil).
+
+Du har väl skapat en mapp för att spara alla projekt i??? Om ej skapa mapp dit012 för alla veckouppgifter!
+Se till att detta projekt ligger i mappen (om inte: stäng IntelliJ flytta och öppna på nytt)
+
+Ett projekt innehåller ett antal mappar
+- Mapparna visas i vänstra fönstret under fliken Project (den skall ni alltid ha framme)
+- Den *ENDA* mappen vi använder är src (=source = Java-filer med kod). src skall var blå, om ej kontakta handledare.
+- Allt vi skriver skall finnas i (eller hamna i) någon undermapp till src.
+- Mappen out skall vara röd. Om ej kontakta ...
+- Verkar inget fungera: Kontrollera File > Project Structure > Project SDK (skall stå 1.8)
+
+src-mappen innehåller följande undermappar
+- assignment, de program ni skall skriva
+- assignment/basics, mindre uppgifter som övar ett specifikt koncept
+- assignment/product, en lite större uppgift, ett "helt" program
+- assignment/uber, innehåller mer utmanande uppgifter för dig som kan en del. Frivilliga!
+- samples (innehåller kodexempel)
+- samples/basics, exempel på detaljer
+- samples/slides, exempel från presentationer. Innehåller lösningar från presentationsbilder (slides)
+  där det står "Programmering" som rubrik.
+
+
+Exekvering i IntelliJ
+-----------------------
+För ett exekvera (köra) ett program, markera en fil och klicka Run (en "grön triangel"-ikon,
+finns på flera ställen, uppe till höger i verktygsraden eller vänsterklicka i kodfönstret)
+För att avbryta ett program klickar man Stop (röd fyrkant) nere till vänster (syns inte just nu).
+
+
+Uppgifter
+---------
+För ev. vidare instruktioner se respektive fil
+
+1.  Kör programmet samples/basics/HelloWorld
+
+2.  Skriv klart programmet /assignment/basics/HelloMe
+
+3.  Kör programmet samples/basics/F2C (kör flera gånger med olika värden)
+
+4.  Skriv klart programmet /assignment/product/BMI genom att härma hur F2C fungerar.
+    Programmet skall fungera enligt;
+
+    Please, enter your weight (kg) > 80          (enter)
+    Please, enter your height (m) > 1.78         (enter)
+    BMI = 25.24933720489837
+
+
+5.  Börja med Quiz:en "q11". Gå till kursidan > Föreläsningar, där finns en länk
+    (gör klart hemma om du inte hinner)
+
+6.  (Uber) Gör klart /assignment/uber/PrintMySelf (som sagt, frivillig)

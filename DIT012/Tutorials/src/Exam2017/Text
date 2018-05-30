@@ -1,0 +1,16 @@
+Formell parameter tex. public static int biggest(int v1, int v2){
+....
+}
+
+Aktuell parameter använder sig av den formella parametern tex biggestValue = biggest(5,10);
+
+Klass är en mall för hur man ska beskriva på något tex metoder: public int gasoline(int g){..}
+
+Objekt är något som instansierar klassen. tex minbil.gasoline(g);
+
+Primitiv typ innehåller värden.
+
+Tilldelning tex int nrDoors = 4; // = är det tilldelning
+
+Överlagring tex om de har samma namn men olika parametrar
+

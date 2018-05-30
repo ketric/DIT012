@@ -1,0 +1,47 @@
+Methods:
+
+1. Generate random values for each element in the matrix
+
+2. Count out how many neighbors there are
+
+3. check if an elem is on the map
+
+4. Sastisfied: (i = 0, i < 8, i ++):
+        if (getColour(position i) = getColour(Position of currentPoint)
+                same ++
+        else if (!none)
+                total ++
+        return (a State type);
+
+5. find the positions of none elements. move an element from an unsastisfied state to a random none
+
+
+int[] getEmpty(Actor[][] world) {
+        int w = world.length;
+        int numEmpty = 0;
+        Random rand = new Random();
+        double r;
+        int[] empty = new int[]{0, 0};
+
+        for (int x = 0; x < w; x ++) {
+            for (int y = 0; y < w; y ++) {
+                if (world[x][y] == Actor.NONE) {
+                    numEmpty ++;
+                }
+            }
+        }
+
+        for (int x = 0; x < w; x ++) {
+            for (int y = 0; y < w; y ++) {
+                if (world[x][y] == Actor.NONE) {
+                    r = rand.nextDouble();
+                    empty = new int[]{x, y};
+
+                    if (r < 1 / (double)numEmpty)
+                        return empty;
+                }
+            }
+        }
+
+        return empty;
+    }

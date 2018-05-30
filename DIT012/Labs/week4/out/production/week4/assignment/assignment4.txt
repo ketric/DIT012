@@ -1,0 +1,48 @@
+**** Laboration 4 ***
+
+Till detta skall ENDAST används det vi gått igenom vecka 1-4
+
+För ev. vidare instruktioner se i respektive fil
+
+1.  Gör klart klassen Rational i basics/RationalNumbers
+    TIPS: Se till att alla bråk är förkortade så långt det går
+    (ni gjorde en gcd-metod tidigare)
+
+2. Utgå från basics/PointAndTrianngle och implementera klasserna
+
+    a)  Point, en klass för 3D-koordinater.
+        - Lägg till en konstruktor som tar 3 reella tal (x,y,z)
+        - Lägg till en kopieringskonstruktor
+        - Lägg till en metod distance, som beräknar avståndet till en annan Point
+          (metoder ur Math behövs)
+        - Gör klassen icke-muterbar.
+
+    b)  Tringle, en klass för trianglar i 3D.
+        - En Triangle skall representeras m.h.a. en array med tre Point-objekt.
+        - Lägg till en konstruktor som tar tre Point-objekt och initierar arrayen.
+        - Lägg till en metod area som beräknar triangelns area
+        Använd Herons formel, se https://en.wikipedia.org/wiki/Heron%27s_formula
+
+
+3.  Implementera en version av spelet Pong, se product/*. Spelet skall byggas upp m.h.a
+    av två klasser, en för bollen och en för racketen. Några regler
+    - För varje studs ökar bollens hastighet.
+    - För varje studs mot racketen får man en poäng.
+    - Missar man bollen med racketen åker den ut till höger eller vänster.
+    - Bollen startar åt höger eller vänster med en slumpmässig vinkel.
+    - Det finns inga spelar-objekt. Istället använd två heltal för poäng för respektive vänster
+    och höger racket.
+
+    Finns ingen speciellt "vinst", man kör så länge man vill.
+    Frivilligt: Bygg på så att det blir en spelupplevelse.
+
+    OBS! Ni behöver inte lägga tid på att få perfekt grafik (kollisioner)
+
+4.  (Uber) Skriv en nätverksversion av något av de spel vi gått igenom
+    Kan ganska lätt göras med XML-RPC, see http://xmlrpc.scripting.com/spec.html.
+    Sök vidare på nätet för exemplel (vi använder apache:s version av XML-PRC).
+
+    Startkod finns i uber/* Testa att köra servern (först) och därefter clienten.
+
+
+

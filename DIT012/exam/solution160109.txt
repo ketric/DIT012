@@ -1,0 +1,297 @@
+/**
+ *  Lösningsförslag för tentamen DIT012 2016-01-09
+ *  
+ */
+
+
+    // --------- 1 --------------
+    // See slides
+
+
+    // ----- 2 ----------
+    void program(){
+        Scanner scan = new Scanner(in);
+        out.print("Ange R1 > ");
+        double r1 = scan.nextInt();
+         out.print("Ange R2 > ");
+        double r2 = scan.nextInt();
+
+        double rtot = (r1*r2) / (r1 + r2);
+
+        out.println("Ersättnings R : " + rtot);
+
+    }
+
+    // --------- 3 -------------------
+
+    String fibonacci(int n) {
+        if (n > 1) {
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        } else if (n == 1) {
+            return "01";
+        } else {
+            return "0";
+        }
+    }
+
+    // -------- 4 ---------
+    // See slides
+
+    // -------- 5 ---------
+    // Other solution is to sum x and y directions
+    boolean willHit(int startX, int startY, int endX, int endY, int[] walk) {
+        final int N = 1;
+        final int E = 2;
+        final int S = 3;
+        final int W = 4;
+
+        for (int i = 0; i < walk.length; i++) {
+            int dir = walk[i] / 10;
+            int step = walk[i] % 10;
+            switch (dir) {
+                case N:
+                    startY = startY + step;
+                    break;
+                case E:
+                    startX = startX + step;
+                    break;
+                case S:
+                    startY = startY - step;
+                    break;
+                case W:
+                    startX = startX - step;
+                    break;
+
+            }
+        }
+        return (startX == endX && startY == endY);
+    }
+
+    // ------- 6 -----------
+    // NOTE: Pen and Table are not a useful classes
+
+    class Player {
+        final String name;
+        Score score;
+        Player(String name, Score score){ // Possibly also a dice
+            this.name = name;
+            this.score = score;
+        }
+    }
+    class Dice {  // Use 5 of these (or throw one 5 times)
+        int nFaces;
+        Dice(int nFaces){
+            this.nFaces = nFaces;
+        }
+
+    }
+    class Score {
+        int[] rowScore;   // The 17 rows on the note paper
+        // Keep track of selected outcomes
+        Score(){}
+    }
+    class Yatzy {
+        // Class for the game
+        List<Player> players;
+        List<Dice> dices;
+        // Player and Score connected before calling this
+        Yatzy( List<Player> players, List<Dice> dices){
+            this.dices = dices;
+            this.players = players;
+        }
+
+    }
+
+
+    // ------ 7 --------------------
+    String toAll(String swe) {
+        String all = "";
+        for (String word : swe.split(" ")) {
+            int i = indexOfFirstConsonant(word);
+            if (i >= 0) {
+                all = all + word.substring(0, i + 1) + "all" + word.substring(i + 1) + " ";
+            } else {
+                all = all + word + " ";
+            }
+        }
+        return all;
+    }
+
+    // Helper
+    boolean isConsonant(char ch) {
+        return "aouåeiyäöAOUÅEIYÖ".indexOf(ch) < 0;
+    }
+
+    // Helper
+    int indexOfFirstConsonant(String word) {
+        int index = 0;
+        while (!isConsonant(word.charAt(index))) {
+            index++;
+            if (index >= word.length()) {
+                return -1;
+            }
+        }
+        return index;
+    }
+
+
+    // ------- 8 ------------------
+    /*
+        Output is "a= 2 b= 1"
+        #Variables =  10  ( 2 in Wrapper, 3 in WrapperSwapper, 5 in program())
+        #Objects = 6 (2 Integer, 2 Wrapper, 1 WrapperSwapper, 1 String)
+	
+	Picture  (when row *)  has executed)
+        	 ws, v1, v2, i (names) are variables
+        	 ---> is a reference
+        	 { ... } is an object,
+
+        ws --->  {
+                    void swap(...){...}
+                 }
+        v1 --->  {
+                   Integer i ----> { 2 }
+                 }
+        v2 -->   {
+                   Integer i ---> { 1 }
+                 }
+     */
+
+    class Wrapper {
+        Integer i;
+
+        Wrapper(Integer i) {
+            this.i = i;
+        }
+    }
+
+    class WrapperSwapper {
+        void swap(Wrapper v1, Wrapper v2) {
+            Integer tmp = v1.i;
+            v1.i = v2.i;
+            v2.i = tmp;
+        }
+    }
+
+    void program() {
+        WrapperSwapper ws = new WrapperSwapper();
+        int a = 1;
+        int b = 2;
+        Wrapper v1 = new Wrapper(a);
+        Wrapper v2 = new Wrapper(b);
+        ws.swap(v1, v2);
+        out.println("a= " + v1.i + " b= " + v2.i);
+    }
+
+    // ------------ 9 -----------------
+
+    public class SortedIntegerSet {
+        private final List<Integer> elems;
+
+        public SortedIntegerSet() {
+            elems = new ArrayList<>();
+        }
+
+        public SortedIntegerSet(int[] elements) {
+            elems = new ArrayList<>();
+            for (int i : elements) {
+                this.add(i);
+            }
+        }
+
+        public SortedIntegerSet(SortedIntegerSet orig) {
+            elems = new ArrayList<>();
+            for (int i : orig.elems) {
+                this.add(i);
+            }
+        }
+
+        // Returns a view of the portion of this set whose
+        // elements are strictly less than toElement.
+        public SortedIntegerSet headSet(Integer toElement) {
+            List<Integer> tmp = new ArrayList<>();
+            int i = 0;
+            while (i < elems.size()) {
+                Integer j = elems.get(i);
+                if (j < toElement) {
+                    tmp.add(j);
+                } else {
+                    break;
+                }
+                i++;
+            }
+            SortedIntegerSet s = new SortedIntegerSet();
+            for (Integer j : tmp) {
+                s.add(j);
+            }
+            return s;
+        }
+
+ 	// Or, better
+        public SortedIntegerSet headSet2(Integer toElement) {
+            SortedIntegerSet s = new SortedIntegerSet();
+            int i = 0;
+            while (toElement < elems.get(i)) {
+                s.add(elems.get(i));
+                i++;
+            }
+            return s;
+        }
+
+
+
+        public boolean remove(Integer element) {
+            return elems.remove(element);
+        }
+
+        public boolean add(Integer element) {
+            if (elems.isEmpty()) {
+                elems.add(element);
+                return true;
+            }
+            if (elems.contains(element)) {
+                return false;
+            }
+            int i = 0;
+            while (i < elems.size()) {
+                if (elems.get(i) > element) {
+                    break;
+                }
+                i++;
+            }
+            elems.add(i, element);
+            return true;
+
+        }
+
+        @Override
+        public String toString() {
+            return "SortedIntegerSet{" + elems +
+                    '}';
+        }
+    }
+
+    // ------------ 10 -----------------
+
+    int[][] m = {   // Sample matrix
+            {4},
+            {3, 2},
+            {1, 2, 1},
+            {2, 4, 1, 3}
+
+    };
+
+    int minValue(int[][] m) {
+        for (int row = m.length - 1; row > 0; row--) {
+            for (int col = m[row].length - 1; col > 0; col--) {
+                if (m[row][col] < m[row][col - 1]) {
+                    m[row - 1][col - 1] += m[row][col];
+                } else {
+                    m[row - 1][col - 1] += m[row][col - 1];
+                }
+            }
+        }
+        return m[0][0];
+    }
+
+}

@@ -1,0 +1,27 @@
+public class Circles {
+    Circle c1 = new Circle(1,1,2);
+    Circle c2 = new Circle(2,2,6);
+    Circle c3 = c1.merge(c2);
+
+    private double x;
+    private double y;
+    private double radius;
+
+    public Circle(double x, double y, double radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+    public Circle merge(Circle other) {
+        double totalArea = this.area() + other.area();
+        double newRadius = Math.sqrt(totalArea / Math.PI);
+        if (this.area() > other.area()) {
+            return new Circle(this.x, this.y, newRadius);
+        } else {
+            return new Circle(other.x, other.y, newRadius);
+        }
+    }
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}

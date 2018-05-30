@@ -1,0 +1,172 @@
+    LÖSNINGFÖRSLAG TENTAMEN DIT012  2016-08-017
+
+
+    // --------- 1 --------------
+
+    See slides
+
+    // ----- 2 ----------
+
+    void program () {
+        Scanner sc = new Scanner(in);
+        double a, b, c, d, e, f;
+        out.print("Input a, b and e for ax + by = e > ");
+        a = sc.nextDouble();
+        b = sc.nextDouble();
+        e = sc.nextDouble();
+        out.print("Input c, d and f for cx + dy = f > ");
+        c = sc.nextDouble();
+        d = sc.nextDouble();
+        f = sc.nextDouble();
+
+        double x = (e * d - b * f) / (a * d - b * c);
+        double y = (a * f - e * c) / (a * d - b * c);
+        out.println("x = " + x + " y =" + y);
+
+    }
+
+    // --------- 3 -------------------
+    boolean isPalindromeNumber(int number) {
+        int palindrome = number;
+        int reverse = 0;
+
+        while (palindrome != 0) {
+            int remainder = palindrome % 10;
+            reverse = reverse * 10 + remainder;
+            palindrome = palindrome / 10;
+        }
+        return number == reverse;
+    }
+
+    // -------- 4 ---------
+
+    // See slides
+
+
+    // -------- 5 ---------
+    int nClump(int arr[]) {
+        int n = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == arr[i + 1]) {
+                n++;
+            }
+            // NOTE: Order of conjunction!
+            while (i < arr.length - 1 && arr[i] == arr[i + 1]) {
+                i++;
+            }
+        }
+        return n;
+    }
+
+    // ------- 6 -----------
+    int maxSquare(int[][] matr) {
+        int sum = 0;
+        for (int r = 0; r < matr.length - 1; r++) {
+            for (int c = 0; c < matr[r].length - 1; c++) {
+                int tmp = matr[r][c] + matr[r][c + 1] + matr[r + 1][c] + matr[r + 1][c + 1];
+                if (tmp > sum) {
+                    sum = tmp;
+                }
+            }
+        }
+        return sum;
+    }
+
+    // ------ 7 --------------------
+    // There are other possible solutions
+
+    public class NPC {
+        private double x;
+        private double y;
+        private int health;
+        private int power;
+
+        public NPC(double x, double y, int health, int power) {
+            this.x = x;
+            this.y = y;
+            this.health = health;
+            this.power = power;
+        }
+
+         public NPC( NPC other) {
+            x = other.x;
+            y = other.y;
+            health = other.health;
+            power = other.power;
+        }
+
+        public boolean isDead(){
+            return health == 0;
+        }
+    }
+
+    // ------- 8 ------------------
+ public class reverseString {
+    static Scanner sc = new Scanner(System.in);        	System.out.print("input String: ");
+        String s = sc.nextLine();
+        reverseThisString(s);
+    }
+    static void reverseThisString(String mening) {
+        String preResult = "";
+        String[] arrayStr = mening.split(" ");
+        for (int i = arrayStr.length - 1; i > -1; i --) {
+            preResult += arrayStr[i] + " ";
+        }
+        String result = preResult.substring(0, preResult.length() -1);
+        System.out.println(result);
+    }
+}
+
+
+    // ------------ 9 -----------------
+    public class ConnectFourGame {
+        private final Color[][] board = new Color[6][7];
+
+        public boolean put(int col, Color c) {
+            int row = findRow(col);
+            if (row >= 0) {
+                board[row][col] = c;
+                return true;
+            }
+            return false;
+        }
+
+        private int findRow(int col) {
+            int row = board.length - 1;
+            while (row >= 0 && board[row][col] != null) {
+                row--;
+            }
+            return row;
+        }
+
+    }
+
+    // ------- Uppg 10 ----------------------------
+
+    Outout: Elvis wears a size -1930 belt.
+
+    This this had to do with the initialization order of classes (in memory repreesentation of)
+    and objects. The order is
+    static variables (and initializers) in written order
+    instance variables (and initializers) in written order
+    constructor
+
+    public class Elvis {
+        public static final Elvis INSTANCE = new Elvis();    // 1. init of statics in written order
+        private final int beltSize;                          // 4. init of instance variables
+        private static final int CURRENT_YEAR =               // 3. init of second static
+            Calendar.getInstance().get(Calendar.YEAR);
+
+        private Elvis() {
+            beltSize = CURRENT_YEAR - 1930;                  // 2. CURRENT_YEAR not instantiatied
+        }
+
+        public int beltSize() {
+            return beltSize;
+        }
+
+        public static void main(String[] args) {
+            System.out.println("Elvis wears a size " +
+                INSTANCE.beltSize() + " belt.");
+        }
+}

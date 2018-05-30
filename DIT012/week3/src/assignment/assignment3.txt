@@ -1,0 +1,42 @@
+**** Laboration 3 ***
+
+Till detta skall ENDAST används det vi gått igenom vecka 1-3
+
+För ev. vidare instruktioner se i respektive fil
+
+1.  Utgå från basics/NestedForLoops och använd nästlade for-loopar för att skriva ut
+
+    a)  X
+        XX
+        XXX
+        XXXX
+        XXXXX
+        XXXXXX
+        XXXXXXX
+
+    b) XXXXXXXXXX
+        XXXXXXXXXX
+         XXXXXXXXXX
+          XXXXXXXXXX
+
+    Enbart out.print('X'), out.print(' ') och out.println() skall användas (förutom looparna)
+
+2.  Går klart basics/ArrrayPuzzlers. Vid behov använd funktionell nedbrytning!
+
+3.  Vi skall skriva ett program som simulerar segregering, se vidare
+    Se : http://nifty.stanford.edu/2014/mccown-schelling-model-segregation/
+    - Vårt program är inte lika omfattande, vi hårdkodar in all data, t.ex.procentuell
+    fördelning och tröskelvärden för grannar, se product/Simulation.java och bilden simulation.png
+
+    Titta igenom *hela* programmet och se vad som finns.
+
+    Utgå från metoden updateWorld och försök använda funktionell nedbrytning och abstraktion.
+    Skriv tester för (lämpliga) metoder.
+
+    KRAV: Alla metoder du skriver skall ha parametrar och returvärden de får *inte* använda instansvariabler
+    direkt (eftersom vi övar funktionell abstraction).
+
+4.  (Uber). Lägg till ett grafiskt användargränssnitt till simuleringen så att alla parametrar, på ett
+    enkelt sätt, kan varieras. Använd JavaFX, se påbörjat exempel JavaFXGUI och bok och/eller web.
+
+

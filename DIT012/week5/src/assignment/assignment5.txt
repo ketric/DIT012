@@ -1,0 +1,23 @@
+**** Laboration 5 ***
+
+Till detta kan du använda allt vi gått igenom
+
+För ev. vidare instruktioner se i respektive fil
+
+1.  Utgå från /basics/TicTacToe och strukturera om programmet så att klassfiler med en klass/fil
+    används. All IO ligger kvar i TicTacToe. Se till att göra allt private och om möjligt final.
+    Ni måste lägga till getters och setters (IntelliJ kan generare, Högerklick > Generate > Getter and Setter).
+
+2. Gör klart basics/PigLatin. Se,https://en.wikipedia.org/wiki/Pig_Latin
+    Använd metoder från klassen string ... så mycket som möjligt (om möjligt undvik egna loopar)!
+    Använd funktionell nedbrytning!
+
+    Vilka String-metoder som finns och vad de gör:
+    Se https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+
+4.  Gör ett Memory-spel. Början finns i product/, se product/README-filen
+
+
+
+
+

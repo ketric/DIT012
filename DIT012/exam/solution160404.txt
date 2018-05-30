@@ -1,0 +1,177 @@
+
+/**
+ * Suggested solutions to DIT012 exam 20160404
+ */
+
+
+    // --------- 1 --------------
+    // See slides
+
+
+    // ----- 2 ----------
+    // Calculate volume of sphere
+    void program() {
+        Scanner scan = new Scanner(in);
+        out.print("Radius > ");
+        double r = scan.nextDouble();
+        double vol = 4 * PI / 3 * r * r * r;
+        out.println("Volume : " + vol);
+    }
+
+    // --------- 3 -------------------
+
+    double sumSeries(int n) {
+        double sum = 0;
+        double d1 = 1;
+        double d2 = 1;
+        for (int i = 1; i <= n; i++) {
+            sum = sum + (1 / d1);
+            double tmp = d1 + d2;
+            d1 = d2;
+            d2 = tmp;
+        }
+        return sum;
+    }
+
+    // -------- 4 ---------
+    // Explain primitive vs reference types. See slides
+
+    // -------- 5 ---------
+    int[] duplicateEven(int[] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 0) {
+                count++;
+            }
+        }
+        int[] result = new int[arr.length + count];
+        int j = 0;
+        for (int i = 0; i < arr.length; i++) {
+            result[j] = arr[i];
+            if (arr[i] % 2 == 0) {
+                result[j + 1] = arr[i];
+                j++;
+            }
+            j++;
+        }
+        return result;
+    }
+
+    // ------- 6 ------------------
+     /*
+       1
+       121
+       12321
+       1234321
+       123454321
+    */
+    void drawNumberHalfSquare(int nRow) {
+        for (int row = 0; row < nRow; row++) {
+            for (int col = 0; col < row; col++) {
+                out.print(col + 1);
+            }
+            for (int col = row + 1; col > 0; col--) {
+                out.print(col);
+            }
+            out.println();
+        }
+    }
+
+    // ------- 7 -----------
+    class TicTacToeBoard {
+        // There are other possibilities
+        private final char[][] board = {
+                {'-', '-', '-'},
+                {'-', '-', '-'},
+                {'-', '-', '-'}
+        };
+
+        public void put(int row, int col, char ch) {
+            board[row][col] = ch;
+        }
+
+        public void move(int r1, int c1, int r2, int c2) {
+            board[r2][c2] = board[r1][c1];
+	    board[r1][c1] = '-';
+        }
+
+        boolean isEmpty(int row, int col) {
+            return board[row][col] == '-';
+        }
+
+        boolean isOwner(int row, int col, char mark) {
+            return board[row][col] == mark;
+        }
+    }
+
+    void runTicTacToe() {
+        TicTacToeBoard t = new TicTacToeBoard();
+        if (t.isEmpty(0, 0) && t.isOwner(1, 0, 'X') && isNeighbour(0, 0, 1, 0)) {
+            t.move(1, 0, 0, 0);
+        }
+
+    }
+
+    boolean isNeighbour(int r1, int c1, int r2, int c2) {
+        return true; // Not implemented
+    }
+
+    // ------ 8 --------------------
+    // Assume text is lower
+    String soundex(String text) {
+        char prevChar = ' ';
+        StringBuilder builder = new StringBuilder();
+        builder.append(text.charAt(0));
+        int i = 1;
+        while (i < text.length() && builder.length() < 4) {
+            char val = getValueFor(text.charAt(i));
+            // Add if not zero or same as last character
+            if (val != '0' && val != prevChar) {
+                builder.append(val);
+                prevChar = val;
+            }
+            i++;
+        }
+        // Pad with trailing zeros
+        while (builder.length() < 4) {
+            builder.append('0');
+        }
+        return builder.toString();
+    }
+
+    // Helper
+    char getValueFor(char ch) {
+        String keys = "abcdefghijklmnopqrstuvwxyz";
+        String values = "01230120022455012623010202";
+        return values.charAt(keys.indexOf(ch));
+    }
+
+
+    // ------------ 9 -----------------
+    // Out commented rows will not compile
+
+    public class MixSolution {
+
+        public static int i = 1;
+        public int j = 2;
+
+        public static void doIt() {
+            i = 5;
+            //i = j;  //This is a class method can't reference instances
+            //j = i;  //This is a class method can't reference instances
+            // doOther()         // This is a class method which object should handle the call?
+            // this.doOther();   // Can't use this, no this in class method
+
+            new MixSolution().j = 5;
+            new MixSolution().doOther();
+        }
+
+        public void doOther() {
+            i = 5;
+            i = j;
+            j = i;
+            doIt(); // Call static from instance ok
+        }
+
+    }
+}

@@ -1,0 +1,50 @@
+
+*********************  MEMORY ***********************
+
+Spelet Memory, se https://en.wikipedia.org/wiki/Concentration_(game)
+och https://sv.wikipedia.org/wiki/Memory_(spel)
+
+Spelarna vänder i varje omgång två kort.
+- Om bilderna på de vända korten de olika byter man till nästa spelare (korten döljs).
+- Är bilderna lika får spelaren dessa kort samt får fortsätta att gissa.
+  (de kort som ingick i paret tas bort från spelplanen).
+- Då alla kort är borta visas vilken spelare som vunnit.
+
+Krav
+-----
+- Spelare (2st) och antal kort (16st) kan hårdkodas.
+- Alla anrop från GUI skall gå till (via) Memory klassen. Inga andra klasser får
+ anropas *direkt* från GUI:et.
+ - Ni skall använda klasser ur Java Collection Framework (List, ArrayList) inte arrayer!
+ - Se upp med equals och hashCode, klasser i samlingar kan behöva dessa. Kan genereras av IntelliJ
+  > högerklick > Generate ...
+
+
+Rekommenderad inledande process
+-------------------------------
+Ni kan inte slaviskt följa detta hela tiden. Följ det inledningsvis för att komma igång.
+
+Ni behöver papper och penna!
+
+1. Gå igenom koden och försök förstå vilka delar som ansvarar för vad (vilken data finna var)!
+   Läs kommentarer! Skriv ner och eller/skissa på papper. Rita fyrkanter, pilar eller vad som, för att få ett
+   grepp om programmet. Finns något färdig användbart? Skriv kommentarer i koden för att komma ihåg,
+   använd // TODO-kommentarer.
+   Uppdatera skissen vartefter ni fördjupar er förståelse.
+
+2. Försök hitta egendefinierade tillstånd för programmet. Vilka är de? Vad orsakar byte av tillstånd? Rita!
+   Hur skall GUI:et påverkas programmets egendefinierade tillstånd?
+
+3. Rita en skiss (pilar) vad som skall hända när man klickar på kort i GUI:et, vidare
+   till Memory, vidare till .... D.v.s. vilken kedja av metodanrop kan behövas? I vilken klass skall
+   respektive metod placeras? Bryt ner metoder i mindre metoder! Hur beror resultatet på tillståndet?
+
+4. Hur skall GUI:er informeras om spelets tillstånd (så att bilden i GUI:et stämmer med programmets tillstånd)?
+
+5. Hur, var och när skall modellen (objekten) skapas?
+
+6. Börja implementera en av anropskedjorna från punkt 3. Börja med de minsta/enklaste metoderna och testa.
+   Sätt ihop dessa till nästa nivå o.s.v. till hela anropskedjan fungerar.
+
+7. Fortsätt med övriga anropskedjor. Tills klart ...hitta gärna på någon "twist", have fun!
+
